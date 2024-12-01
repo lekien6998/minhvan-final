@@ -61,7 +61,7 @@
       })(window, document);
     </script>
     <link
-      href="https://cdn.prod.website-files.com/6516721a6fb9882d90f618af/673b2fc170120e466ad7823c_favi-icon.png"
+      href="https://scontent.fhan15-2.fna.fbcdn.net/v/t1.15752-9/462558175_1755931675162491_7883677853188035174_n.png?stp=cp0_dst-png&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=-33oTNbJt1AQ7kNvgGOxM9I&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&oh=03_Q7cD1QHBsiju2TIG4DThYD5a-eUEK_gQhrTA_rhOSoiOPNFCLQ&oe=67648DDC"
       rel="shortcut icon"
       type="image/x-icon"
     />
@@ -190,6 +190,7 @@
             data-lenis-start=""
             alt=""
             class="closer"
+            style="cursor: pointer"
           />
         </div>
         <div class="text-block-75">Hộp mừng cưới<br /></div>
@@ -307,6 +308,7 @@
               data-lenis-start=""
               alt=""
               class="closer"
+              style="cursor: pointer"
             />
           </div>
           <form
@@ -346,6 +348,37 @@
                 type="text"
                 id="phoneNumber"
               />
+            </div>
+            <div class="text-field">
+              <label for="peopleCount" class="field-label"
+                >Bạn đi bao nhiêu người ạ</label
+              >
+              <input
+                class="w-input"
+                maxlength="2"
+                name="peopleCount"
+                data-name="Số người"
+                placeholder=""
+                type="hidden"
+                id="peopleCountInput"
+              />
+              <div style="margin-bottom: 10px">
+                <button
+                  type="button"
+                  id="decreasePeopleCountBtn"
+                  style="font-weight: bold; cursor: pointer"
+                >
+                  -
+                </button>
+                <span id="peopleCountText" style="margin: 0 5px">1 người</span>
+                <button
+                  type="button"
+                  id="increasePeopleCountBtn"
+                  style="font-weight: bold; cursor: pointer"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <div>
               <label for="message" class="field-label">Lời chúc</label
@@ -1300,7 +1333,7 @@
         link.rel = "shortcut icon";
         // set the link href attribute
         link.href =
-          "https://cdn.prod.website-files.com/6516721a6fb9882d90f618af/65e0d2915e14a78ea4e3d7dc_Frame%2021.png";
+          "https://scontent.fhan15-2.fna.fbcdn.net/v/t1.15752-9/462558175_1755931675162491_7883677853188035174_n.png?stp=cp0_dst-png&_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=-33oTNbJt1AQ7kNvgGOxM9I&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&oh=03_Q7cD1QHBsiju2TIG4DThYD5a-eUEK_gQhrTA_rhOSoiOPNFCLQ&oe=67648DDC";
         // append the link to the head element
         document.getElementsByTagName("head")[0].appendChild(link);
       });
@@ -1416,6 +1449,24 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      $("#peopleCountInput").val(1);
+
+      $("#decreasePeopleCountBtn").on("click", () => {
+        $("#peopleCountInput").val(
+          Math.max(+$("#peopleCountInput").val() - 1, 1)
+        );
+        document.getElementById("peopleCountText").innerHTML = `${$(
+          "#peopleCountInput"
+        ).val()} người`;
+      });
+
+      $("#increasePeopleCountBtn").on("click", () => {
+        $("#peopleCountInput").val(+$("#peopleCountInput").val() + 1);
+        document.getElementById("peopleCountText").innerHTML = `${$(
+          "#peopleCountInput"
+        ).val()} người`;
+      });
+
       function handleSubmit(e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
 
