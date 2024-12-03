@@ -1520,12 +1520,12 @@
             }
             const newBlessDiv = document.createElement("div");
             newBlessDiv.className = "div-block-133";
+            newBlessDiv.style.maxWidth = "100%";
             const nameDiv = document.createElement("div");
             nameDiv.className = "text-block-76";
             nameDiv.innerHTML = bless.name;
             newBlessDiv.appendChild(nameDiv);
             const messageDiv = document.createElement("div");
-            messageDiv.style.maxWidth = "100vw";
             messageDiv.innerHTML = bless.message;
             newBlessDiv.appendChild(messageDiv);
             document.getElementById("blesses").appendChild(newBlessDiv);
