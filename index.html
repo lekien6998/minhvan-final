@@ -148,10 +148,11 @@
     </div>
     <script>
       let isPlaying = false;
+      let everPlayed = false;
       const playBtn = document.getElementById("musicBtn");
       const player = document.getElementById("audioPlayer");
       const icon = document.getElementById("soundIcon");
-      playBtn.addEventListener("click", () => {
+      function handlePlayMusic() {
         if (isPlaying) {
           player.pause();
           isPlaying = false;
@@ -163,7 +164,18 @@
           icon.src =
             "https://img.icons8.com/?size=100&id=41563&format=png&color=1A1A1A";
         }
-      });
+      }
+      document.body.addEventListener(
+        "mouseup",
+        () => {
+          if (!everPlayed) {
+            handlePlayMusic();
+            everPlayed = true;
+          }
+        },
+        true
+      );
+      playBtn.addEventListener("click", handlePlayMusic);
     </script>
     <div class="modal-not-attend">
       <div class="div-block-129 _2">
@@ -1513,6 +1525,7 @@
             nameDiv.innerHTML = bless.name;
             newBlessDiv.appendChild(nameDiv);
             const messageDiv = document.createElement("div");
+            messageDiv.style.maxWidth = "100vw";
             messageDiv.innerHTML = bless.message;
             newBlessDiv.appendChild(messageDiv);
             document.getElementById("blesses").appendChild(newBlessDiv);
